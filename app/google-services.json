@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "721952932702",
+    "firebase_url": "https://primedclass-ac515.firebaseio.com",
+    "project_id": "primedclass-ac515",
+    "storage_bucket": "primedclass-ac515.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721952932702:android:923500ebac7a407f",
+        "android_client_info": {
+          "package_name": "com.primedsoft.primedclass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721952932702-om88p0j1rl46d0o00gatbqs8b0jtdkqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.primedsoft.primedclass",
+            "certificate_hash": "33a30d5c8ee6a528e46624b574ef7bf071011434"
+          }
+        },
+        {
+          "client_id": "721952932702-97434696gqe4e6t3me9ce032c6gbme8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjexpoDaXoQ2N6xWLOZSDODvbWCw-Uf3s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721952932702-97434696gqe4e6t3me9ce032c6gbme8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

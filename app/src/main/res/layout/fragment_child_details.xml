@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ChildDetails">
+
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+
+        <EditText
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:id="@+id/edtChildName"
+            android:textColorHint="#8effffff"
+            android:paddingEnd="32dp"
+            android:inputType="text"
+            android:background="@drawable/bubble"
+            android:gravity="center_vertical"
+            android:paddingStart="32dp"
+            android:hint="Name"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/edtChildPresentClass"
+            android:paddingEnd="32dp"
+            android:inputType="text"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bubble"
+            android:textColorHint="#8effffff"
+            android:gravity="center_vertical"
+            android:paddingStart="32dp"
+            android:hint="Present Class"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/edtChildAge"
+            android:paddingEnd="32dp"
+            android:layout_gravity="center_horizontal"
+            android:inputType="number"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bubble"
+            android:textColorHint="#8effffff"
+            android:gravity="center_vertical"
+            android:paddingStart="32dp"
+            android:hint="Age"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/edtParentExpectation"
+            android:paddingEnd="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bubble"
+            android:textColorHint="#8effffff"
+            android:gravity="center_vertical"
+            android:paddingStart="32dp"
+            android:hint="Expectation"
+            android:textColor="#ffffff" />
+        <EditText
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/edtChildChallenges"
+            android:paddingEnd="32dp"
+            android:inputType="text"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bubble"
+            android:textColorHint="#8effffff"
+            android:gravity="center_vertical"
+            android:paddingStart="32dp"
+            android:hint="Noticeable Academic Challenges"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btnAddChild"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/_dark"
+            android:textAllCaps="false"
+            android:foregroundTint="@color/darkop"
+            android:text="Update Child Info"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+
+</ScrollView>

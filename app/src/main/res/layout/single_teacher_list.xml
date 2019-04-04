@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:elevation="8dp"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="90dp"
+        android:id="@+id/teacherImage"
+        android:layout_height="90dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Teacher Name"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:id="@+id/txtTeachersName"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Teachers phone number"
+            android:id="@+id/txtTeachersPhoneNumber"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="subject taught"
+            android:id="@+id/txtSubjectTaught"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="class taught"
+            android:id="@+id/txtClassTaught"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
