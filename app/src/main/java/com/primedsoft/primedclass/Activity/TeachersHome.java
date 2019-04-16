@@ -3,6 +3,7 @@ package com.primedsoft.primedclass.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -30,12 +30,14 @@ import com.primedsoft.primedclass.Model.AssignedModel;
 import com.primedsoft.primedclass.Model.ChildModel;
 import com.primedsoft.primedclass.R;
 import com.primedsoft.primedclass.Utils.CircleTransform;
+import com.primedsoft.primedclass.WelcomeActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class TeachersHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    boolean doubleBackToExitPressedOnce = false;
 
     FirebaseAuth auth;
     private RecyclerView rvChild;
@@ -79,32 +81,28 @@ public class TeachersHome extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }  else if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
+        }else {
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
+            Intent homeScreenIntent = new Intent(Intent.ACTION_MAIN);
+            homeScreenIntent.addCategory(Intent.CATEGORY_HOME);
+            homeScreenIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(homeScreenIntent);
+
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.teachers_home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -112,17 +110,11 @@ public class TeachersHome extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        if (id == R.id.homeTeacher) {
+            startActivity(new Intent(TeachersHome.this,TeachersHome.class));
+        } else if (id == R.id.Logout) {
+            auth.signOut();
+            startActivity(new Intent(TeachersHome.this, WelcomeActivity.class));
 
         }
 

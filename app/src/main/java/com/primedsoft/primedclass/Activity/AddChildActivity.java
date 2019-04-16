@@ -121,6 +121,7 @@ public class AddChildActivity extends AppCompatActivity {
 
         if (mImageUri != null){
             mProgressBar.setMessage("Adding your child .. please wait");
+            mProgressBar.setCancelable(false);
             mProgressBar.show();
 
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()

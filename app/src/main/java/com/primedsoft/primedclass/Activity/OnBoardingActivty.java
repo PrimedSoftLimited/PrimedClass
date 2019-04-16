@@ -2,6 +2,7 @@ package com.primedsoft.primedclass.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +18,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.primedsoft.primedclass.R;
 import com.primedsoft.primedclass.Utils.Pref;
 import com.primedsoft.primedclass.WelcomeActivity;
@@ -30,15 +33,35 @@ public class OnBoardingActivty extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private Pref prefManager;
+    private FirebaseAuth auth;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+
+        auth = FirebaseAuth.getInstance();
         prefManager = new Pref(this);
         if (!prefManager.isFirstTimeLaunch()) {
-          startActivity(new Intent(OnBoardingActivty.this,HomeTeacher.class));
-            finish();
+            if (auth.getCurrentUser() != null){
+
+                String status = preferences.getString("status", "");
+                if (status.equalsIgnoreCase("teacher")){
+                    startActivity(new Intent(OnBoardingActivty.this,TeachersHome.class));
+                    finish();
+                }else if (status.equalsIgnoreCase("parent")){
+                    startActivity(new Intent(OnBoardingActivty.this,HomeTeacher.class));
+                    finish();
+                }else {
+                    startActivity(new Intent(OnBoardingActivty.this,AdminDashboard.class));
+                    finish();
+                }
+            }else {
+                Toast.makeText(this, "Please continue to sign in or sign up", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
         // Making notification bar transparent

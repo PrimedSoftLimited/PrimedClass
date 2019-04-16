@@ -33,6 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.primedsoft.primedclass.Activity.HomeTeacher;
 import com.primedsoft.primedclass.Model.ParentModel;
 import com.primedsoft.primedclass.R;
 import com.primedsoft.primedclass.Utils.CircleTransform;
@@ -139,6 +140,7 @@ public class ParentSignupActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         if (mImageUri != null){
                             mProgressBar.setMessage("Signing you up .. please wait");
+                            mProgressBar.setCancelable(false);
                             mProgressBar.show();
 
                             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
@@ -172,14 +174,13 @@ public class ParentSignupActivity extends AppCompatActivity {
 
 
                                     String uploadId = mAuth.getCurrentUser().getUid();
-
-
                                     mDatabaseRef.child(uploadId).setValue(parentModel)
                                             .addOnCompleteListener(task1 -> {
                                                 SharedPreferences.Editor editor = preferences.edit();
                                                 editor.putString(STATUS, "parent");
                                                 editor.apply();
-
+                                                mProgressBar.dismiss();
+                                                startActivity(new Intent(ParentSignupActivity.this, HomeTeacher.class));
 
                                             }).addOnFailureListener(new OnFailureListener() {
                                         @Override
@@ -191,6 +192,8 @@ public class ParentSignupActivity extends AppCompatActivity {
                                 }
                             });
 
+                        }else {
+                            Toast.makeText(this, "Please select an image to continue", Toast.LENGTH_SHORT).show();
                         }
 
                     }

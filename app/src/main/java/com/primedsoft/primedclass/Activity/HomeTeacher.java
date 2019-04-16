@@ -3,6 +3,7 @@ package com.primedsoft.primedclass.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +31,7 @@ import com.primedsoft.primedclass.Model.ChildModel;
 import com.primedsoft.primedclass.Model.ParentModel;
 import com.primedsoft.primedclass.R;
 import com.primedsoft.primedclass.Utils.CircleTransform;
+import com.primedsoft.primedclass.WelcomeActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -38,6 +41,7 @@ import ru.dimorinny.floatingtextbutton.FloatingTextButton;
 
 public class HomeTeacher extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    boolean doubleBackToExitPressedOnce = false;
 
     FirebaseAuth auth;
     private RecyclerView rvChild;
@@ -104,7 +108,6 @@ public class HomeTeacher extends AppCompatActivity
 
 
         TextView parentName = header.findViewById(R.id.txtParentName);
-
         parentName.setText(name);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -131,8 +134,25 @@ public class HomeTeacher extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        } else if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
+        }else {
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
+            Intent homeScreenIntent = new Intent(Intent.ACTION_MAIN);
+            homeScreenIntent.addCategory(Intent.CATEGORY_HOME);
+            homeScreenIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(homeScreenIntent);
+
         }
     }
 
@@ -164,20 +184,12 @@ public class HomeTeacher extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.homeParent) {
+            startActivity(new Intent(HomeTeacher.this,TeachersHome.class));
+        } else if (id == R.id.LogoutParent) {
+            auth.signOut();
+            startActivity(new Intent(HomeTeacher.this, WelcomeActivity.class));
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

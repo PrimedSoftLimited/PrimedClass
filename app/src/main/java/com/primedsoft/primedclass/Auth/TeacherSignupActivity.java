@@ -212,6 +212,7 @@ public class TeacherSignupActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             if (mImageUri != null){
                                 mProgressBar.setMessage("Signing you up .. please wait");
+                                mProgressBar.setCancelable(false);
                                 mProgressBar.show();
 
                                 StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
@@ -251,10 +252,10 @@ public class TeacherSignupActivity extends AppCompatActivity {
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
-                                                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                                                        SharedPreferences.Editor editor = preferences.edit();
                                                         editor.putString(STATUS, "teacher");
                                                         editor.apply();
-
+                                                        mProgressBar.dismiss();
                                                         startActivity(new Intent(TeacherSignupActivity.this, TeachersHome.class));
 
                                                     }

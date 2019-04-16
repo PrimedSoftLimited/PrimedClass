@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.primedsoft.primedclass.Model.AssignedModel;
+import com.primedsoft.primedclass.Model.ChildrenTeacherModel;
 import com.primedsoft.primedclass.Model.TeacherModel;
 import com.primedsoft.primedclass.R;
 import com.primedsoft.primedclass.Utils.CircleTransform;
@@ -33,7 +34,7 @@ public class AssignTeachers extends AppCompatActivity {
 
     FirebaseAuth auth;
     private RecyclerView AllParentsRv;
-    private DatabaseReference mUsersDatabase,assignedChildrenRef;
+    private DatabaseReference mUsersDatabase,assignedChildrenRef,childrenTeacherRef;
     private LinearLayoutManager mLayoutManager;
     private Query stylistQuery;
     private String parentUid,ChildrenKey;
@@ -49,6 +50,7 @@ public class AssignTeachers extends AppCompatActivity {
         parentUid = getIntent().getStringExtra("parentUid");
         ChildrenKey = getIntent().getStringExtra("childKey");
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        childrenTeacherRef = FirebaseDatabase.getInstance().getReference().child("Children Teachers");
         assignedChildrenRef = FirebaseDatabase.getInstance().getReference().child("Assigned Children");
 
         AllParentsRv = (RecyclerView) findViewById(R.id.rvAllTeachers);
@@ -101,8 +103,25 @@ public class AssignTeachers extends AppCompatActivity {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
                                                                 if (task.isSuccessful()){
-                                                                    Toast.makeText(AssignTeachers.this, "Child successfully assigned", Toast.LENGTH_SHORT).show();
-                                                                    finish();
+
+                                                                    ChildrenTeacherModel childrenTeacherModel = new ChildrenTeacherModel();
+                                                                    childrenTeacherModel.setTeacerName(model.getName());
+                                                                    childrenTeacherModel.setTeacherImageUrl(model.getImageUrl());
+                                                                    childrenTeacherModel.setTeacherUid(model.getUid());
+
+
+                                                                    childrenTeacherRef.child(parentUid).child(ChildrenKey).push().setValue(childrenTeacherModel)
+                                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                                    if (task.isSuccessful()){
+                                                                                        Toast.makeText(AssignTeachers.this, "Child successfully assigned", Toast.LENGTH_SHORT).show();
+                                                                                        finish();
+
+                                                                                    }
+                                                                                }
+                                                                            });
+
 
                                                                 }
 

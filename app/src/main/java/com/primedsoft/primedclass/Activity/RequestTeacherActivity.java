@@ -40,8 +40,7 @@ public class RequestTeacherActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         requestedTeachersRef = FirebaseDatabase.getInstance().getReference().child("Requested Teachers");
-        usersRef = FirebaseDatabase.getInstance().getReference().child("Users" +
-                "");
+        usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
         AllParentsRequeestRv = (RecyclerView)findViewById(R.id.rvAllTeachersRequests);
         mLayoutManager = new LinearLayoutManager(this);
 

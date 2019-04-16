@@ -58,8 +58,8 @@ public class AllTeachers extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        teacherRv = (RecyclerView) view.findViewById(R.id.rvAllParents);
-        teacherQuery = mUsersDatabase.orderByChild("status").equalTo("parent");
+        teacherRv = (RecyclerView) view.findViewById(R.id.rvAllRegisteredTeachers);
+        teacherQuery = mUsersDatabase.orderByChild("status").equalTo("teacher");
 
         mLayoutManager = new LinearLayoutManager(getContext());
         teacherRv.setHasFixedSize(true);

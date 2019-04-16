@@ -18,23 +18,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.TeachingActivity"></activity>
-        <activity android:name=".Activity.AllUsers" />
-        <activity android:name=".Activity.RequestTeacherActivity" />
-        <activity android:name=".Activity.PArentChildrenActivity" />
-        <activity android:name=".Activity.AssignTeachers" />
+        <activity android:name=".Activity.ParentChildComplain"></activity>
+        <activity android:name=".Activity.Complains" />
+        <activity
+            android:name=".Activity.AdminSigninActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AdminComplainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.ParentViewTeaching"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.TeachingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AllUsers"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.RequestTeacherActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.PArentChildrenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AssignTeachers"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.TeachersHome"
             android:label="@string/title_activity_teachers_home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.AdminDashboard" />
+        <activity
+            android:name=".Activity.AdminDashboard"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.ChildDetails"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.AddChildActivity" />
+        <activity
+            android:name=".Activity.AddChildActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.HomeTeacher"
             android:label="Parent Home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -50,25 +78,34 @@
 
         <activity
             android:name=".Maps.MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Auth.ParentSignupActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Auth.TeacherSignupActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Auth.Login"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Auth.Signup"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.OnBoardingActivty"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

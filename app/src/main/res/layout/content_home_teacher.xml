@@ -17,7 +17,7 @@
 
     <ru.dimorinny.floatingtextbutton.FloatingTextButton
         android:id="@+id/addChildParent"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_marginBottom="20dp"
         android:layout_height="50dp"
         android:elevation="9dp"
@@ -25,7 +25,6 @@
         android:layout_alignParentRight="true"
         android:visibility="visible"
         app:floating_background_color="@color/colorPrimary"
-        app:floating_left_icon="@drawable/ic_add"
         app:floating_title="Add Child"
         app:floating_title_color="#fff" />
 

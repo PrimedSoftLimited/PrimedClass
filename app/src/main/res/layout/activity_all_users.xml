@@ -18,9 +18,9 @@
             android:layout_height="50dp"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            android:background="#000"
-            app:tabSelectedTextColor="@color/colorPrimary"
-            app:tabTextColor="#fff" />
+            android:background="@color/colorPrimary"
+            app:tabSelectedTextColor="#fff"
+            app:tabTextColor="#000" />
 
     </android.support.design.widget.AppBarLayout>
 

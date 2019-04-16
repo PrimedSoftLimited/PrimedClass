@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilTopic"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal">
+
+
+        <EditText
+            android:id="@+id/edtTopicTaught"
+            android:layout_width="match_parent"
+            android:hint="Enter Topic Taught"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="300dp"
+        android:id="@+id/tilCompletedLevel"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/edtCompletedLevel"
+            android:hint="Was the topic completed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnFinishClass"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/_dark"
+        android:textAllCaps="false"
+        android:foregroundTint="@color/darkop"
+        android:text="Finish Class"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+</LinearLayout>
